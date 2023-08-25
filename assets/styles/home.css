@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #FFF;
-
+    width: 100%;
 }
 
 ol,
@@ -59,7 +59,6 @@ section.banner {
 .container__banner {
     position: absolute;
     padding: 0px 0px 0px 9%;
-    margin-top: 6rem;
 }
 
 .paragrafo__banner {
@@ -121,6 +120,7 @@ section.produtos {
 .descricao__produtos {
     font-size: 15px;
     padding: 0;
+    margin: 0;
 }
 
 .produto__ver {
@@ -211,4 +211,104 @@ h4 {
     font-size: 30px;
     margin: 0;
     padding-left: 4rem;
+}
+
+@media screen and (max-width: 620px) {
+    header.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .input__header {
+        display: none;
+    }
+
+    .paragrafo__banner {
+        font-size: 30px;
+    }
+
+    .container__banner {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .banner__img {
+        width: 100%;
+    }
+
+    .text__banner {
+        padding: 0;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .lista__produtos li:nth-child(n+3) {
+        display: none;
+    }
+
+    .lista__produtos {
+        flex-wrap: wrap;
+    }
+
+    section.produtos {
+        align-items: center;
+    }
+
+    .img__coontato {
+        display: none;
+    }
+
+    .button__contato {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 720px) {
+    header.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .input__header {
+        display: none;
+    }
+
+    .paragrafo__banner {
+        font-size: 30px;
+    }
+
+    .container__banner {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .banner__img {
+        width: 100%;
+    }
+
+    .text__banner {
+        padding: 0;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .lista__produtos li:nth-child(n+3) {
+        display: none;
+    }
+
+    section.produtos {
+        align-items: center;
+    }
+
+    .img__coontato {
+        display: none;
+    }
+
+    .button__contato {
+        width: 100%;
+    }
+
 }

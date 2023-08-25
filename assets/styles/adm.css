@@ -47,6 +47,7 @@ header.container {
     cursor: pointer;
 }
 
+
 section.banner {
     display: flex;
     flex-direction: column;
@@ -58,7 +59,6 @@ section.banner {
 .container__banner {
     position: absolute;
     padding: 0px 0px 0px 9%;
-    margin-top: 6rem;
 }
 
 .paragrafo__banner {
@@ -78,6 +78,8 @@ section.banner {
     padding: 0 10px;
     color: #FFF;
 }
+
+
 
 .button__add {
     background-color: #2A7AE4;
@@ -189,7 +191,7 @@ i {
     padding-top: 1rem;
 }
 
-h4 {
+.titulo__produtos {
     padding: 0;
     font-weight: bold;
     color: #4e4e4e;
@@ -269,4 +271,53 @@ i {
 .button__produts {
     border: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
+    header.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .paragrafo__banner {
+        font-size: 30px;
+    }
+
+    .container__banner {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .banner__img {
+        width: 100%;
+    }
+
+    .text__banner {
+        padding: 0;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .img__coontato {
+        display: none;
+    }
+
+    .button__contato {
+        width: 100%;
+    }
+
+    .titulo__produtos {
+        margin: 0;
+        padding: 0;
+    }
+
+    .add_produtos {
+        justify-content: center;
+    }
+
+    .titulo__produtos {
+        margin: 0;
+        padding: 0;
+    }
 }

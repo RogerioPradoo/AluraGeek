@@ -26,6 +26,10 @@ header.container {
     gap: 40px;
 }
 
+.text__button {
+    color: #FFF;
+}
+
 .input__header {
     border-radius: 50px;
     border: none;
@@ -116,4 +120,25 @@ header.container {
 .footer {
     justify-content: center;
     text-align: center;
+}
+
+
+@media screen and (max-width: 720px) {
+    header.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .input__header {
+        display: none;
+    }
+
+    .img__coontato {
+        display: none;
+    }
+
+    .button__contato {
+        width: 100%;
+    }
 }
