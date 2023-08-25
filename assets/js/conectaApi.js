@@ -1,12 +1,12 @@
 async function listarTodos(cate) {
-    const conexao = await fetch(`https://alura-geek-neon.vercel.app/${cate}`)
+    const conexao = await fetch(`http://localhost:3000/${cate}`)
     const conexaoConvertida = await conexao.json()
 
     return conexaoConvertida
 }
 
 async function listarUmProduto(cate, id) {
-    const conexao = await fetch(`https://alura-geek-neon.vercel.app/${cate}/${id}`)
+    const conexao = await fetch(`http://localhost:3000/${cate}/${id}`)
     const conexaoConvertida = await conexao.json()
 
     return conexaoConvertida
@@ -14,7 +14,7 @@ async function listarUmProduto(cate, id) {
 
 
 async function addProduto(img, cate, nome, preco, descricao) {
-    const conexao = await fetch(`https://alura-geek-neon.vercel.app/${cate}`, {
+    const conexao = await fetch(`http://localhost:3000/${cate}`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -41,7 +41,7 @@ async function editarProduto(img, nome, preco, descricao) {
     const catAchado = window.location.search.slice(1).split('/')[0];
     const idAchado = window.location.search.slice(1).split('/')[1];
 
-    const conexao = await fetch(`https://alura-geek-neon.vercel.app/${catAchado}/${idAchado}`, {
+    const conexao = await fetch(`http://localhost:3000/${catAchado}/${idAchado}`, {
         method: "PATCH",
         body: JSON.stringify({
             nome: nome,
@@ -65,7 +65,7 @@ async function editarProduto(img, nome, preco, descricao) {
 }
 
 async function excluirProduto(cate, id) {
-    const conexao = await fetch(`https://alura-geek-neon.vercel.app/${cate}/${id}`, {
+    const conexao = await fetch(`http://localhost:3000/${cate}/${id}`, {
         method: 'DELETE',
     })
         .then(response => response.json())
