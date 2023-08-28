@@ -1,4 +1,4 @@
-import { recebeAPI } from "./api.js"
+import { recebeAPI } from "./server.js"
 
 
 async function listarTodos() {
