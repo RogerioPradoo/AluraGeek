@@ -1,9 +1,10 @@
 import { conectaApi } from "../conectaApi.js";
 
+
 const produto = document.querySelector("[data-umProduto]");
 const produtoRelacionados = document.querySelector("[data-Relacionados]");
 
-export function constroiCard(nome, img, preco, descricao, alt, id) {
+export function constroiCard(nome, img, preco, descricao, alt, id, tipo) {
     const video = document.createElement("li");
     video.className = "lista__produtos";
     video.innerHTML =
@@ -12,9 +13,9 @@ export function constroiCard(nome, img, preco, descricao, alt, id) {
             <img class="img__produtos" src="${img}" alt=${alt}>
             <p class="descricao__produtos">${nome}</p>
             <p class="descricao__produtos">R$ ${preco}</p>
-            <a id="produto__ver" href="./produto.html?id=${id}" class="ver__produto">Ver Produto</a>
+            <a id="produto__ver" href="./produto.html?tipo=${tipo}&id=${id}" class="ver__produto">Ver Produto</a>
             </div>
-    `
+            `
     return video;
 
 }
@@ -40,18 +41,17 @@ async function listarUm() {
     try {
 
         const idAchado = window.location.search.slice(1).split('=')[2];
-        const tipoAchado = window.location.search.slice(1).split('=')[1].split("/")[0]
-        console.log(idAchado)
-        console.log(tipoAchado)
+        const tipoAchado = window.location.search.slice(1).split('=')[1].split("&")[0]
+
+        const pegarUm = await conectaApi.listarUmProduto(tipoAchado, idAchado)
 
         const listaApi = await conectaApi.listarTodos(tipoAchado);
-        const pegarUm = await conectaApi.listarUmProduto(tipoAchado, idAchado)
 
         const restoItens = listaApi.filter(id => id.id != idAchado);
 
         produto.appendChild(constroiPrincipal(pegarUm.nome, pegarUm.img, pegarUm.preco, pegarUm.descricao, pegarUm.alt, pegarUm.id, pegarUm.tipo))
 
-        restoItens.forEach(e => produtoRelacionados.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id)))
+        restoItens.forEach(e => produtoRelacionados.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
 
 
     } catch (error) {

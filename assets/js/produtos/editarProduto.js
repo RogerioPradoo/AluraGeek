@@ -1,9 +1,8 @@
-import { conectaApi } from '../conectaApi.js';
+import { conectaApi } from "../conectaApi.js";
 const form = document.querySelector("[data-formulario]");
 
 const catAchado = window.location.search.slice(1).split('/')[0];
 const idAchado = window.location.search.slice(1).split('/')[1];
-
 const pegarItem = await conectaApi.listarUmProduto(catAchado, idAchado)
 
 document.querySelector('[data-url]').value = pegarItem.img
@@ -12,7 +11,7 @@ document.querySelector('[data-preco]').value = pegarItem.preco
 document.querySelector('[data-desc]').value = pegarItem.descricao
 
 
-async function editarProduto() {
+async function editar() {
     const url = document.querySelector('[data-url]').value
     const nome = document.querySelector('[data-nome]').value
     const preco = document.querySelector('[data-preco]').value
@@ -29,5 +28,5 @@ async function editarProduto() {
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    editarProduto()
+    editar()
 });

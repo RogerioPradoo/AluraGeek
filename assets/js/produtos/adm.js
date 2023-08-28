@@ -1,6 +1,5 @@
 import { conectaApi } from "../conectaApi.js";
 
-
 const primeiraLista = document.querySelector("[data-lista__start]");
 const segundaLista = document.querySelector("[data-lista__console]");
 const terceiraLista = document.querySelector("[data-lista__diversos]");
@@ -31,6 +30,7 @@ async function listarPrimeiro() {
 
         primeiraLista.addEventListener("click", (event) => {
             const guardar = event.target.closest("section");
+            console.log(guardar)
             if (event.target.classList.value == "fa-solid fa-pencil") {
                 const resp = confirm("Você quer editar o produto?")
                 if (resp) {

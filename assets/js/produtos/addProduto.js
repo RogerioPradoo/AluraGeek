@@ -1,5 +1,4 @@
 import { conectaApi } from '../conectaApi.js';
-
 const form = document.querySelector("[data-formulario]")
 
 
@@ -13,9 +12,7 @@ async function criarVideo(e) {
     const desc = document.querySelector('[data-desc]').value
 
     try {
-
         await conectaApi.addProduto(url, categoria, nome, preco, desc);
-
     } catch (error) {
         alert(error);
     }

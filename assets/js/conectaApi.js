@@ -2,8 +2,6 @@ async function listarTodos(cate) {
     const conexao = await fetch(`https://restful-api-vercel-one.vercel.app/${cate}`)
     const conexaoConvertida = await conexao.json()
 
-    console.log(conexaoConvertida)
-
     return conexaoConvertida
 }
 
@@ -46,15 +44,15 @@ async function editarProduto(img, nome, preco, descricao) {
 
     const conexao = await fetch(`https://restful-api-vercel-one.vercel.app/${catAchado}/${idAchado}`, {
         method: "PATCH",
+        headers: {
+            "Content-type": "application/json"
+        },
         body: JSON.stringify({
             nome: nome,
             img: img,
             preco: preco,
             descricao: descricao
-        }),
-        headers: {
-            "Content-type": "application/json"
-        }
+        })
     })
 
     if (!conexao.ok) {

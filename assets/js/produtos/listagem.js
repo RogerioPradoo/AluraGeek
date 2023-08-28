@@ -13,7 +13,7 @@ export function constroiCard(nome, img, preco, descricao, alt, id, tipo) {
             <img class="img__produtos" src="${img}" alt=${alt}>
             <p class="descricao__produtos">${nome}</p>
             <p class="descricao__produtos">R$ ${preco}</p>
-            <a id="produto__ver" href="../../pages/produto.html?tipo=${tipo}id=${id}" class="ver__produto">Ver Produto</a>
+            <a id="produto__ver" href="../assets/pages/produto.html?tipo=${tipo}&id=${id}" class="ver__produto">Ver Produto</a>
             </div>
     `
     return video;
