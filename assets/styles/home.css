@@ -301,8 +301,6 @@ h4 {
         margin: 0;
     }
 
-
-
     .lista__produtos li:nth-child(n+3) {
         display: none;
     }

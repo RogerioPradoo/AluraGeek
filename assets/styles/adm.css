@@ -320,4 +320,16 @@ i {
         margin: 0;
         padding: 0;
     }
+
+    .container__produtos {
+        align-items: center;
+    }
+
+    .lista__produtos-all {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+    }
 }
