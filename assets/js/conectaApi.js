@@ -1,12 +1,15 @@
-async function listarTodos(cate) {
-    const conexao = await fetch(`http://localhost:3000/${cate}`)
+import { recebeAPI } from "./api.js"
+
+
+async function listarTodos() {
+    const conexao = await fetch(`https://64e90cee99cf45b15fe071fd.mockapi.io/produtos`)
     const conexaoConvertida = await conexao.json()
 
     return conexaoConvertida
 }
 
 async function listarUmProduto(cate, id) {
-    const conexao = await fetch(`http://localhost:3000/${cate}/${id}`)
+    const conexao = await fetch(`${recebeAPI}${cate}/${id}`)
     const conexaoConvertida = await conexao.json()
 
     return conexaoConvertida
@@ -14,7 +17,7 @@ async function listarUmProduto(cate, id) {
 
 
 async function addProduto(img, cate, nome, preco, descricao) {
-    const conexao = await fetch(`http://localhost:3000/${cate}`, {
+    const conexao = await fetch(`${recebeAPI}/${cate}`, {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -26,6 +29,7 @@ async function addProduto(img, cate, nome, preco, descricao) {
             preco: preco,
             descricao: descricao
         })
+
     });
 
     if (!conexao.ok) {
@@ -41,7 +45,7 @@ async function editarProduto(img, nome, preco, descricao) {
     const catAchado = window.location.search.slice(1).split('/')[0];
     const idAchado = window.location.search.slice(1).split('/')[1];
 
-    const conexao = await fetch(`http://localhost:3000/${catAchado}/${idAchado}`, {
+    const conexao = await fetch(`${recebeAPI}/${catAchado}/${idAchado}`, {
         method: "PATCH",
         body: JSON.stringify({
             nome: nome,
@@ -65,7 +69,7 @@ async function editarProduto(img, nome, preco, descricao) {
 }
 
 async function excluirProduto(cate, id) {
-    const conexao = await fetch(`http://localhost:3000/${cate}/${id}`, {
+    const conexao = await fetch(`${recebeAPI}/${cate}/${id}`, {
         method: 'DELETE',
     })
         .then(response => response.json())
@@ -76,12 +80,6 @@ async function excluirProduto(cate, id) {
         })
 }
 
-// async function buscaVideo(termoDeBusca) {
-//     const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`)
-//     const conexaoConvertida = await conexao.json();
-
-//     return conexaoConvertida
-// }
 
 export const conectaApi = {
     addProduto,
@@ -89,5 +87,4 @@ export const conectaApi = {
     excluirProduto,
     listarUmProduto,
     listarTodos
-    // buscaVideo
 }

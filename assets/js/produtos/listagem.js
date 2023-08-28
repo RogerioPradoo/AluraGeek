@@ -21,10 +21,21 @@ export function constroiCard(nome, img, preco, descricao, alt, id, tipo) {
 
 async function listarPrimeiro() {
     try {
-        const listaApi = await conectaApi.listarTodos("startWars");
-        listaApi.forEach(e => primeiraLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
+        const listaApi = await conectaApi.listarTodos();
+
+
+        if (listaApi[0].tipo === "startWars") {
+            const guardar = listaApi.filter((item) => item.tipo === tipo)
+            console.log(guardar)
+        }
+
+
+        // console.log(listaFiltrada)
+
+        // listaFiltrada.forEach(e => segundaLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
 
     } catch (error) {
+        console.log(error.message)
         primeiraLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar a lista de vídeos.</h2>`
     }
 }
