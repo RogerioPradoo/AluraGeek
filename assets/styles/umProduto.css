@@ -168,6 +168,11 @@ section.produtos {
     width: 30%;
     margin-top: 10px;
     color: #FFF;
+    cursor: pointer
+}
+
+.button__contato:hover {
+    background-color: #2162b7;
 }
 
 

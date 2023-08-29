@@ -78,6 +78,12 @@ section.banner {
     border: none;
     padding: 0 10px;
     color: #FFF;
+    cursor: pointer;
+}
+
+.button__banner:hover {
+    background-color: #2162b7;
+    cursor: pointer;
 }
 
 .container__contato {
@@ -112,6 +118,11 @@ section.banner {
     width: 30%;
     margin-top: 10px;
     color: #FFF;
+    cursor: pointer
+}
+
+.button__contato:hover {
+    background-color: #2162b7;
 }
 
 .footer {

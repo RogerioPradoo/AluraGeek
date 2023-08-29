@@ -4,7 +4,7 @@ const primeiraLista = document.querySelector("[data-lista__start]");
 const segundaLista = document.querySelector("[data-lista__console]");
 const terceiraLista = document.querySelector("[data-lista__diversos]");
 
-export function constroiCard(nome, img, preco, descricao, alt, id) {
+export function constroiCard(nome, img, preco, descricao, alt, id, tipo) {
     const video = document.createElement("li");
     video.className = "lista__produtos";
     video.innerHTML =
@@ -17,7 +17,7 @@ export function constroiCard(nome, img, preco, descricao, alt, id) {
             </div>
             <p class="descricao__produtos">${nome}</p>
             <p class="descricao__produtos">R$ ${preco}</p>
-            <a id="produto__ver" href="./produto.html?id=${id}" class="ver__produto">Ver Produto</a>
+            <a id="produto__ver" href="../produto.html?tipo=${tipo}&id=${id}" class="ver__produto">Ver Produto</a>
             </section>
     `
     return video;
@@ -26,7 +26,7 @@ export function constroiCard(nome, img, preco, descricao, alt, id) {
 async function listarPrimeiro() {
     try {
         const listaApi = await conectaApi.listarTodos("startWars");
-        listaApi.forEach(e => primeiraLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id)))
+        listaApi.forEach(e => primeiraLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
 
         primeiraLista.addEventListener("click", (event) => {
             const guardar = event.target.closest("section");
@@ -40,18 +40,19 @@ async function listarPrimeiro() {
             if (event.target.classList.value == "fa-solid fa-trash") {
                 conectaApi.excluirProduto("startWars", guardar.id)
                 alert("Produto excluido com sucesso");
+                location.reload()
             }
         })
 
     } catch (error) {
-        primeiraLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar a lista de vídeos.</h2>`
+        primeiraLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar os produtos</h2>`
     }
 }
 
 async function listarSegundo() {
     try {
         const listaApi = await conectaApi.listarTodos("setups");
-        listaApi.forEach(e => segundaLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id)))
+        listaApi.forEach(e => segundaLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
         segundaLista.addEventListener("click", (event) => {
             const guardar = event.target.closest("section");
             if (event.target.classList.value == "fa-solid fa-pencil") {
@@ -62,14 +63,14 @@ async function listarSegundo() {
         })
 
     } catch (error) {
-        segundaLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar a lista de vídeos.</h2>`
+        segundaLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar Não foi possível carregar os produtos</h2>`
     }
 }
 
 async function listarTerceiro() {
     try {
         const listaApi = await conectaApi.listarTodos("diversos");
-        listaApi.forEach(e => terceiraLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id)))
+        listaApi.forEach(e => terceiraLista.appendChild(constroiCard(e.nome, e.img, e.preco, e.descricao, e.alt, e.id, e.tipo)))
         terceiraLista.addEventListener("click", (event) => {
             const guardar = event.target.closest("section");
             if (event.target.classList.value == "fa-solid fa-pencil") {
@@ -80,7 +81,7 @@ async function listarTerceiro() {
         })
 
     } catch (error) {
-        terceiraLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar a lista de vídeos.</h2>`
+        terceiraLista.innerHTML = `<h2 class="mensagem">Não foi possível carregar Não foi possível carregar os produtos.</h2>`
     }
 }
 

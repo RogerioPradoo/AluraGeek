@@ -8,6 +8,7 @@ async function listarTodos(cate) {
 async function listarUmProduto(cate, id) {
     const conexao = await fetch(`https://restful-api-vercel-one.vercel.app/${cate}/${id}`)
     const conexaoConvertida = await conexao.json()
+    console.log(conexaoConvertida)
 
     return conexaoConvertida
 }
@@ -25,16 +26,17 @@ async function addProduto(img, cate, nome, preco, descricao) {
             img: img,
             preco: preco,
             descricao: descricao
+        }),
+
+    }).then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data.status != 201) {
+                alert("Erro ao salvar o produto")
+            }
         })
 
-    });
-
-    if (!conexao.ok) {
-        throw new Error("Não foi possível enviar o vídeo. ");
-    }
-
     const conexaoConvertida = await conexao.json();
-
     return conexaoConvertida;
 }
 
@@ -53,15 +55,14 @@ async function editarProduto(img, nome, preco, descricao) {
             preco: preco,
             descricao: descricao
         })
-    })
-
-    if (!conexao.ok) {
-        throw new Error("Não foi possível enviar o vídeo. ");
-    }
+    }).then(response => response.json())
+        .then(data => {
+            if (data.status != 204) {
+                alert("Erro ao atualizar o produto")
+            }
+        })
 
     const conexaoConvertida = await conexao.json();
-    alert("Produto atualizado com sucesso")
-
     return conexaoConvertida;
 }
 

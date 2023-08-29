@@ -72,11 +72,18 @@ section.banner {
     font-size: 20px;
 }
 
+
 .button__banner {
     background-color: #2A7AE4;
     border: none;
     padding: 0 10px;
     color: #FFF;
+    cursor: pointer;
+}
+
+.button__banner:hover {
+    background-color: #2162b7;
+    cursor: pointer;
 }
 
 
@@ -176,6 +183,11 @@ i {
     width: 30%;
     margin-top: 10px;
     color: #FFF;
+    cursor: pointer
+}
+
+.button__contato:hover {
+    background-color: #2162b7;
 }
 
 .footer {

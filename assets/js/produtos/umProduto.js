@@ -44,6 +44,7 @@ async function listarUm() {
         const tipoAchado = window.location.search.slice(1).split('=')[1].split("&")[0]
 
         const pegarUm = await conectaApi.listarUmProduto(tipoAchado, idAchado)
+        console.log(pegarUm)
 
         const listaApi = await conectaApi.listarTodos(tipoAchado);
 
@@ -55,7 +56,7 @@ async function listarUm() {
 
 
     } catch (error) {
-        error.innerHTML = `<h2 class="mensagem">Não foi possível carregar a lista de vídeos.</h2>`
+        error.innerHTML = `<h2 class="mensagem">Não foi possível carregar o produto.</h2>`
     }
 }
 

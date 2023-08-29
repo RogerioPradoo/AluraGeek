@@ -4,9 +4,8 @@ function logar() {
 
     if (email.value == "adm@hotmail.com" && password.value == "adm") {
         localStorage.setItem("acesso", true);
-
+        window.location.href = `./adm/adm.html`
     } else {
-
         alert(
             "Erro ao fazer login, por favor tente email: adm@hotmail.com  password: adm")
     }

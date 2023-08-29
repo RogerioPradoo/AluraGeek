@@ -1,8 +1,6 @@
-import { conectaApi } from '../conectaApi.js';
-const form = document.querySelector("[data-formulario]")
+import { conectaApi } from "../conectaApi.js";
 
-
-async function criarVideo(e) {
+async function adicionarProduto(e) {
     e.preventDefault();
 
     const url = document.querySelector('[data-url]').value
@@ -12,10 +10,11 @@ async function criarVideo(e) {
     const desc = document.querySelector('[data-desc]').value
 
     try {
-        await conectaApi.addProduto(url, categoria, nome, preco, desc);
+        const produto = await conectaApi.addProduto(url, categoria, nome, preco, desc);
+        window.location.href = "../../pages/adm.html"
     } catch (error) {
-        alert(error);
+        error.innerHTML = `<h2 class="mensagem">Não foi possível salvar o produto</h2>`
     }
 }
 
-form.addEventListener("submit", e => criarVideo(e))
+document.getElementById("myButton").addEventListener("click", adicionarProduto);

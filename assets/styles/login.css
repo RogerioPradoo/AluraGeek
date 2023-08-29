@@ -112,9 +112,13 @@ header.container {
     border: none;
     padding: 0 10px;
     width: 30%;
-    cursor: pointer;
     margin-top: 10px;
     color: #FFF;
+    cursor: pointer
+}
+
+.button__contato:hover {
+    background-color: #2162b7;
 }
 
 .footer {
